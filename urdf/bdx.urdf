@@ -9,7 +9,7 @@
     <child link="sw_bd0"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
-  
+
   <joint name="head_neck_pitch" type="revolute">
     <origin xyz="-0.0013 -0.076423 0.394589" rpy="3.1415927 -0.0000001 3.1415927"/>
     <parent link="sw_bd0"/>
@@ -112,19 +112,19 @@
     <visual>
       <origin xyz="0. 0.01144 -0.505276" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/head_body_pitch_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_pitch_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0. 0.01144 -0.505276" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/head_body_pitch_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_pitch_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0. 0.01144 -0.505276" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/head_body_pitch_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_pitch_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -137,19 +137,19 @@
     <visual>
       <origin xyz="-0.0339074 0.0000484 -0.5620101" rpy="-0.000175 0.000175 -1.5707964"/>
       <geometry>
-        <mesh filename="meshes/head_body_roll_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_roll_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="-0.0339074 0.0000484 -0.5620101" rpy="-0.000175 0.000175 -1.5707964"/>
       <geometry>
-        <mesh filename="meshes/head_body_roll_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_roll_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.0339074 0.0000484 -0.5620101" rpy="-0.000175 0.000175 -1.5707964"/>
       <geometry>
-        <mesh filename="meshes/head_body_roll_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_roll_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -162,19 +162,19 @@
     <visual>
       <origin xyz="-0.532376 0.011739 0. " rpy="0. 1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/head_body_yaw_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_yaw_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="-0.532376 0.011739 0. " rpy="0. 1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/head_body_yaw_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_yaw_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.532376 0.011739 0. " rpy="0. 1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/head_body_yaw_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/head_body_yaw_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -187,19 +187,19 @@
     <visual>
       <origin xyz="-0.117018 -0.037149 -0.080276" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/left_foot_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_foot_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="-0.117018 -0.037149 -0.080276" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/left_foot_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_foot_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.117018 -0.037149 -0.080276" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/left_foot_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_foot_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -212,19 +212,19 @@
     <visual>
       <origin xyz="0.007827 -0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
       <geometry>
-        <mesh filename="meshes/left_hip_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0.007827 -0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
       <geometry>
-        <mesh filename="meshes/left_hip_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0.007827 -0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
       <geometry>
-        <mesh filename="meshes/left_hip_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -237,19 +237,19 @@
     <visual>
       <origin xyz="0.350727 -0.013027 -0.046658" rpy="0. -1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/left_hip_rotation_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_rotation_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0.350727 -0.013027 -0.046658" rpy="0. -1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/left_hip_rotation_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_rotation_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0.350727 -0.013027 -0.046658" rpy="0. -1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/left_hip_rotation_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_rotation_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -262,19 +262,19 @@
     <visual>
       <origin xyz="0.129009 -0.082156 0.210418" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/left_shin_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_shin_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0.129009 -0.082156 0.210418" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/left_shin_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_shin_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0.129009 -0.082156 0.210418" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/left_shin_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_shin_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -287,19 +287,19 @@
     <visual>
       <origin xyz="-0.129009 -0.00285 -0.288126" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/left_thigh_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_thigh_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="-0.129009 -0.00285 -0.288126" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/left_thigh_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_thigh_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.129009 -0.00285 -0.288126" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/left_thigh_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/left_thigh_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -312,19 +312,19 @@
     <visual>
       <origin xyz="-0.0013 0.076423 0.394589" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/neck_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/neck_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="-0.0013 0.076423 0.394589" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/neck_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/neck_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.0013 0.076423 0.394589" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/neck_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/neck_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -337,19 +337,19 @@
     <visual>
       <origin xyz="-0.117018 -0.037149 0.080276" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/right_foot_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_foot_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="-0.117018 -0.037149 0.080276" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/right_foot_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_foot_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.117018 -0.037149 0.080276" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/right_foot_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_foot_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -362,19 +362,19 @@
     <visual>
       <origin xyz="0.007827 0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
       <geometry>
-        <mesh filename="meshes/right_hip_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0.007827 0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
       <geometry>
-        <mesh filename="meshes/right_hip_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0.007827 0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
       <geometry>
-        <mesh filename="meshes/right_hip_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -387,19 +387,19 @@
     <visual>
       <origin xyz="0.350727 -0.013027 0.046658" rpy="0. -1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/right_hip_rotation_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_rotation_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0.350727 -0.013027 0.046658" rpy="0. -1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/right_hip_rotation_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_rotation_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0.350727 -0.013027 0.046658" rpy="0. -1.5707963 0. "/>
       <geometry>
-        <mesh filename="meshes/right_hip_rotation_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_rotation_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -412,19 +412,19 @@
     <visual>
       <origin xyz="0.129009 -0.082156 -0.210418" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/right_shin_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_shin_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0.129009 -0.082156 -0.210418" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/right_shin_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_shin_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0.129009 -0.082156 -0.210418" rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/right_shin_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_shin_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -437,19 +437,19 @@
     <visual>
       <origin xyz="-0.129009 -0.00285 0.288126" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/right_thigh_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_thigh_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="-0.129009 -0.00285 0.288126" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/right_thigh_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_thigh_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="-0.129009 -0.00285 0.288126" rpy="3.1415927 0.0000001 3.1415927"/>
       <geometry>
-        <mesh filename="meshes/right_thigh_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/right_thigh_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>
@@ -462,19 +462,19 @@
     <visual>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/pelvis_visuals.obj"/>
+        <mesh filename="package://bdx_description/meshes/pelvis_visuals.obj"/>
       </geometry>
     </visual>
     <visual>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/pelvis_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/pelvis_collisions.obj"/>
       </geometry>
     </visual>
     <collision>
       <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
       <geometry>
-        <mesh filename="meshes/pelvis_collisions.obj"/>
+        <mesh filename="package://bdx_description/meshes/pelvis_collisions.obj"/>
       </geometry>
     </collision>
     <inertial>

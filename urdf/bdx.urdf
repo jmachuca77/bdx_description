@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="v3_bdx">
+  <!-- Dummy root link without inertia -->
+  <link name="base_link"/>
+
+  <!-- Fixed joint connecting base_link to sw_bd0 -->
+  <joint name="fixed_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="sw_bd0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <joint name="head_neck_pitch" type="revolute">
+    <origin xyz="-0.0013 -0.076423 0.394589" rpy="3.1415927 -0.0000001 3.1415927"/>
+    <parent link="sw_bd0"/>
+    <child link="neck"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="head_pitch" type="revolute">
+    <origin xyz="-0.0013 0.064983 -0.110687" rpy="3.1415927 0.0000001 3.1415927"/>
+    <parent link="neck"/>
+    <child link="head_body_pitch"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="15" velocity="20"/>
+  </joint>
+  <joint name="head_roll" type="revolute">
+    <origin xyz="0.02964 0.045548 0.00005 " rpy="1.5706214 -0. 1.5706214"/>
+    <parent link="head_body_yaw"/>
+    <child link="head_body_roll"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="15" velocity="20"/>
+  </joint>
+  <joint name="head_yaw" type="revolute">
+    <origin xyz="0. -0.000299 0.0271 " rpy="0. -1.5707963 0. "/>
+    <parent link="head_body_pitch"/>
+    <child link="head_body_yaw"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="15" velocity="20"/>
+  </joint>
+  <joint name="hip_abduction_left" type="revolute">
+    <origin xyz="0.06335 -0.0052 0.00275" rpy="1.5707964 0. -1.5707964"/>
+    <parent link="left_hip_rotation"/>
+    <child link="left_hip"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="hip_abduction_right" type="revolute">
+    <origin xyz="0.06335 -0.0052 -0.00275" rpy="1.5707964 0. -1.5707964"/>
+    <parent link="right_hip_rotation"/>
+    <child link="right_hip"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="hip_flexion_left" type="revolute">
+    <origin xyz="0.004977 0.079601 0.000749" rpy="0. 0. 1.5707964"/>
+    <parent link="left_hip"/>
+    <child link="left_thigh"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="hip_flexion_right" type="revolute">
+    <origin xyz="0.004977 -0.079601 0.000749" rpy="3.1415927 -0.0000001 -1.5707964"/>
+    <parent link="right_hip"/>
+    <child link="right_thigh"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="hip_rotation_left" type="revolute">
+    <origin xyz="0.046658 0.013027 0.350727" rpy="0. 1.5707963 0. "/>
+    <parent link="sw_bd0"/>
+    <child link="left_hip_rotation"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.2617994" upper="0.2617994" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="hip_rotation_right" type="revolute">
+    <origin xyz="-0.046658 0.013027 0.350727" rpy="0. 1.5707963 0. "/>
+    <parent link="sw_bd0"/>
+    <child link="right_hip_rotation"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.2617994" upper="0.2617994" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="thigh_joint_left" type="revolute">
+    <origin xyz="0. 0.079306 -0.077708" rpy="3.1415927 -0.0000001 3.1415927"/>
+    <parent link="left_thigh"/>
+    <child link="left_shin"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="thigh_joint_right" type="revolute">
+    <origin xyz="-0. 0.079306 0.077708" rpy="3.1415927 0.0000001 3.1415927"/>
+    <parent link="right_thigh"/>
+    <child link="right_shin"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="toe_joint_left" type="revolute">
+    <origin xyz="0.011991 -0.045007 0.130142" rpy="3.1415927 0.0000001 3.1415927"/>
+    <parent link="left_shin"/>
+    <child link="left_foot"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <joint name="toe_joint_right" type="revolute">
+    <origin xyz="0.011991 -0.045007 -0.130142" rpy="3.1415927 -0.0000001 3.1415927"/>
+    <parent link="right_shin"/>
+    <child link="right_foot"/>
+    <axis xyz="1. 0. 0."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="23.7" velocity="30"/>
+  </joint>
+  <link name="head_body_pitch">
+    <visual>
+      <origin xyz="0. 0.01144 -0.505276" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/head_body_pitch_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0.01144 -0.505276" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/head_body_pitch_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0.01144 -0.505276" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/head_body_pitch_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.00021166162266480506 0.006984499391688618 0.01273686729712964" rpy="0 0 0"/>
+      <mass value="0.5232206536385304"/>
+      <inertia ixx="0.000112" iyy="0.000198" izz="0.000205" ixy="1e-06" iyz="-1.6e-05" ixz="1e-06"/>
+    </inertial>
+  </link>
+  <link name="head_body_roll">
+    <visual>
+      <origin xyz="-0.0339074 0.0000484 -0.5620101" rpy="-0.000175 0.000175 -1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/head_body_roll_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0339074 0.0000484 -0.5620101" rpy="-0.000175 0.000175 -1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/head_body_roll_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.0339074 0.0000484 -0.5620101" rpy="-0.000175 0.000175 -1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/head_body_roll_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.0005152722414162986 -0.05158004964580376 0.00513643993688484" rpy="0 0 0"/>
+      <mass value="5.0942155694527305"/>
+      <inertia ixx="0.039562" iyy="0.030187" izz="0.063238" ixy="2e-05" iyz="0.001552" ixz="9e-06"/>
+    </inertial>
+  </link>
+  <link name="head_body_yaw">
+    <visual>
+      <origin xyz="-0.532376 0.011739 0. " rpy="0. 1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/head_body_yaw_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.532376 0.011739 0. " rpy="0. 1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/head_body_yaw_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.532376 0.011739 0. " rpy="0. 1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/head_body_yaw_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-3.900708192695237e-05 0.0036768514711653048 0.022423787552204644" rpy="0 0 0"/>
+      <mass value="0.7884788831732902"/>
+      <inertia ixx="0.000545" iyy="0.000245" izz="0.00055" ixy="0.0" iyz="-1e-05" ixz="0.0"/>
+    </inertial>
+  </link>
+  <link name="left_foot">
+    <visual>
+      <origin xyz="-0.117018 -0.037149 -0.080276" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/left_foot_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.117018 -0.037149 -0.080276" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/left_foot_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.117018 -0.037149 -0.080276" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/left_foot_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.004317824098437145 -0.022539625010942255 -0.05014233472325014" rpy="0 0 0"/>
+      <mass value="2.196651599731846"/>
+      <inertia ixx="0.006073" iyy="0.00203" izz="0.005022" ixy="-0.000115" iyz="-0.000449" ixz="-0.000495"/>
+    </inertial>
+  </link>
+  <link name="left_hip">
+    <visual>
+      <origin xyz="0.007827 -0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/left_hip_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.007827 -0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/left_hip_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.007827 -0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/left_hip_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.03758545882228228 -0.008742267643225502 0.0005073004766672495" rpy="0 0 0"/>
+      <mass value="1.2525665319575872"/>
+      <inertia ixx="0.000491" iyy="0.001604" izz="0.001478" ixy="-8.9e-05" iyz="2e-06" ixz="-4e-06"/>
+    </inertial>
+  </link>
+  <link name="left_hip_rotation">
+    <visual>
+      <origin xyz="0.350727 -0.013027 -0.046658" rpy="0. -1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/left_hip_rotation_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.350727 -0.013027 -0.046658" rpy="0. -1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/left_hip_rotation_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.350727 -0.013027 -0.046658" rpy="0. -1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/left_hip_rotation_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.003476916493858888 0.0053298176720920735 -0.05718740567578556" rpy="0 0 0"/>
+      <mass value="2.7104129345182724"/>
+      <inertia ixx="0.00322" iyy="0.004455" izz="0.001963" ixy="-4e-06" iyz="3e-05" ixz="4.3e-05"/>
+    </inertial>
+  </link>
+  <link name="left_shin">
+    <visual>
+      <origin xyz="0.129009 -0.082156 0.210418" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/left_shin_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.129009 -0.082156 0.210418" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/left_shin_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.129009 -0.082156 0.210418" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/left_shin_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.022337864800614962 -0.02138729956553212 -0.08585627245860046" rpy="0 0 0"/>
+      <mass value="3.533655907847469"/>
+      <inertia ixx="0.013524" iyy="0.010593" izz="0.00365" ixy="-0.000238" iyz="-0.003425" ixz="-0.000634"/>
+    </inertial>
+  </link>
+  <link name="left_thigh">
+    <visual>
+      <origin xyz="-0.129009 -0.00285 -0.288126" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/left_thigh_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.129009 -0.00285 -0.288126" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/left_thigh_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.129009 -0.00285 -0.288126" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/left_thigh_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.017133138774223372 0.033955639219308796 -0.034203295112669785" rpy="0 0 0"/>
+      <mass value="9.79771075244762"/>
+      <inertia ixx="0.045664" iyy="0.023224" izz="0.02779" ixy="0.000209" iyz="0.013684" ixz="2.8e-05"/>
+    </inertial>
+  </link>
+  <link name="neck">
+    <visual>
+      <origin xyz="-0.0013 0.076423 0.394589" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/neck_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.0013 0.076423 0.394589" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/neck_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.0013 0.076423 0.394589" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/neck_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.004042027280354878 0.02470566499069614 0.05563012545350571" rpy="0 0 0"/>
+      <mass value="1.8541562983293536"/>
+      <inertia ixx="0.00435" iyy="0.003545" izz="0.001491" ixy="-0.000163" iyz="-0.001516" ixz="-0.000383"/>
+    </inertial>
+  </link>
+  <link name="right_foot">
+    <visual>
+      <origin xyz="-0.117018 -0.037149 0.080276" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/right_foot_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.117018 -0.037149 0.080276" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/right_foot_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.117018 -0.037149 0.080276" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/right_foot_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.004317818616470584 -0.022539625010942255 -0.05014233472325015" rpy="0 0 0"/>
+      <mass value="2.196651599731845"/>
+      <inertia ixx="0.006073" iyy="0.00203" izz="0.005022" ixy="0.000115" iyz="-0.000449" ixz="0.000495"/>
+    </inertial>
+  </link>
+  <link name="right_hip">
+    <visual>
+      <origin xyz="0.007827 0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/right_hip_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.007827 0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/right_hip_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.007827 0.049408 -0.287377" rpy="0. 0. 1.5707964"/>
+      <geometry>
+        <mesh filename="meshes/right_hip_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.037585464304248785 -0.00874226764322552 0.0005073004766671385" rpy="0 0 0"/>
+      <mass value="1.2525665319575874"/>
+      <inertia ixx="0.000491" iyy="0.001604" izz="0.001478" ixy="8.9e-05" iyz="2e-06" ixz="4e-06"/>
+    </inertial>
+  </link>
+  <link name="right_hip_rotation">
+    <visual>
+      <origin xyz="0.350727 -0.013027 0.046658" rpy="0. -1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/right_hip_rotation_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.350727 -0.013027 0.046658" rpy="0. -1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/right_hip_rotation_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.350727 -0.013027 0.046658" rpy="0. -1.5707963 0. "/>
+      <geometry>
+        <mesh filename="meshes/right_hip_rotation_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.0034769226818922236 0.005329819672309381 -0.05718740698283692" rpy="0 0 0"/>
+      <mass value="2.710413234826848"/>
+      <inertia ixx="0.00322" iyy="0.004455" izz="0.001963" ixy="4e-06" iyz="3e-05" ixz="-4.3e-05"/>
+    </inertial>
+  </link>
+  <link name="right_shin">
+    <visual>
+      <origin xyz="0.129009 -0.082156 -0.210418" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/right_shin_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.129009 -0.082156 -0.210418" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/right_shin_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.129009 -0.082156 -0.210418" rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/right_shin_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.022337859585607883 -0.02138729987531795 -0.08585627297390336" rpy="0 0 0"/>
+      <mass value="3.5336559525083544"/>
+      <inertia ixx="0.013524" iyy="0.010593" izz="0.00365" ixy="0.000238" iyz="-0.003425" ixz="0.000634"/>
+    </inertial>
+  </link>
+  <link name="right_thigh">
+    <visual>
+      <origin xyz="-0.129009 -0.00285 0.288126" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/right_thigh_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.129009 -0.00285 0.288126" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/right_thigh_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.129009 -0.00285 0.288126" rpy="3.1415927 0.0000001 3.1415927"/>
+      <geometry>
+        <mesh filename="meshes/right_thigh_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.01713314425618992 0.033955639219308775 -0.03420329511266973" rpy="0 0 0"/>
+      <mass value="9.797710752447612"/>
+      <inertia ixx="0.045664" iyy="0.023224" izz="0.02779" ixy="-0.000209" iyz="0.013684" ixz="-2.8e-05"/>
+    </inertial>
+  </link>
+  <link name="sw_bd0">
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/pelvis_visuals.obj"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/pelvis_collisions.obj"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/pelvis_collisions.obj"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.000295994068282851 0.007955095459404031 0.3364252274377364" rpy="0 0 0"/>
+      <mass value="58.84451460019125"/>
+      <inertia ixx="0.742196" iyy="0.390346" izz="0.59813" ixy="0.001443" iyz="-0.018987" ixz="-0.001018"/>
+    </inertial>
+  </link>
+</robot>

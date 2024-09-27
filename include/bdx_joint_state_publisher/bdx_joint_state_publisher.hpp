@@ -10,7 +10,6 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "sensor_msgs/msg/joint_state.hpp"
-#include "std_msgs/msg/float64.hpp"
 
 class BDXJointStatePublisher : public rclcpp::Node
 {
@@ -22,6 +21,8 @@ private:
     void joint_callback(const sensor_msgs::msg::JointState::SharedPtr msg, const std::string& joint_name);
 
     std::map<std::string, double> joint_positions_;
+    std::map<std::string, double> joint_velocities_;
+    std::map<std::string, double> joint_efforts_;
     std::vector<std::string> joint_names_;
 
     rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr publisher_;

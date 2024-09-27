@@ -12,10 +12,12 @@ BDXJointStatePublisher::BDXJointStatePublisher() : Node("bdx_joint_state_publish
         "thigh_joint_left", "thigh_joint_right", "toe_joint_left", "toe_joint_right"
     };
 
-    // Set initial positions to zero
+    // Set initial positions, velocities, and efforts to zero
     for (const auto &name : joint_names_)
     {
         joint_positions_[name] = 0.0;
+        joint_velocities_[name] = 0.0;
+        joint_efforts_[name] = 0.0;
     }
 
     // Create subscribers for each joint topic dynamically
@@ -37,7 +39,15 @@ BDXJointStatePublisher::BDXJointStatePublisher() : Node("bdx_joint_state_publish
 
 void BDXJointStatePublisher::joint_callback(const sensor_msgs::msg::JointState::SharedPtr msg, const std::string& joint_name)
 {
-    joint_positions_[joint_name] = msg->data;
+    if (!msg->name.empty()) {
+        for (size_t i = 0; i < msg->name.size(); ++i) {
+            if (msg->name[i] == joint_name) {
+                joint_positions_[joint_name] = msg->position.empty() ? 0.0 : msg->position[i];
+                joint_velocities_[joint_name] = msg->velocity.empty() ? 0.0 : msg->velocity[i];
+                joint_efforts_[joint_name] = msg->effort.empty() ? 0.0 : msg->effort[i];
+            }
+        }
+    }
 }
 
 void BDXJointStatePublisher::publish_joint_states()
@@ -47,11 +57,12 @@ void BDXJointStatePublisher::publish_joint_states()
     // Set the current time in the header
     message.header.stamp = this->get_clock()->now();
 
-    // Populate joint names and positions
+    // Populate joint names, positions, velocities, and efforts
     message.name = joint_names_;
-    for (const auto &name : joint_names_)
-    {
+    for (const auto &name : joint_names_) {
         message.position.push_back(joint_positions_[name]);
+        message.velocity.push_back(joint_velocities_[name]);
+        message.effort.push_back(joint_efforts_[name]);
     }
 
     // Publish the message

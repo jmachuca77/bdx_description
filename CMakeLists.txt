@@ -11,6 +11,28 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 find_package(urdf REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
+
+# Include directories
+include_directories(include)
+
+# Add executable
+add_executable(bdx_joint_state_publisher src/bdx_joint_state_publisher.cpp)
+
+# Link against ROS 2 packages
+ament_target_dependencies(bdx_joint_state_publisher rclcpp sensor_msgs std_msgs)
+
+# Install executable
+install(TARGETS
+  bdx_joint_state_publisher
+  DESTINATION lib/${PROJECT_NAME})
+
+# Install header files
+install(DIRECTORY include/
+  DESTINATION include/
+)
 
 # Install URDF and meshes
 install(DIRECTORY urdf meshes

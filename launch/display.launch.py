@@ -9,7 +9,7 @@ from launch.actions import DeclareLaunchArgument
 
 def generate_launch_description():
     package_name = 'bdx_description'
-    urdf_file = 'bdx.urdf'
+    urdf_file = 'go_bdx.urdf'
     urdf_path = os.path.join(
         get_package_share_directory(package_name),
         'urdf',

@@ -6,11 +6,10 @@ BDXJointStatePublisher::BDXJointStatePublisher() : Node("bdx_joint_state_publish
 {
     // Initialize joint names
     joint_names_ = {
-        "head_neck_pitch", "head_pitch", "head_roll", "head_yaw",
-        "hip_abduction_left", "hip_abduction_right", "hip_flexion_left", 
-        "hip_flexion_right", "hip_rotation_left", "hip_rotation_right",
-        "thigh_joint_left", "thigh_joint_right", "toe_joint_left", "toe_joint_right"
-    };
+        "left_hip_yaw","left_hip_roll","left_hip_pitch","left_knee","left_ankle",
+        "right_hip_yaw","right_hip_roll","right_hip_pitch","right_knee","right_ankle",
+        "neck_pitch","head_pitch","head_yaw","head_roll","left_antenna","right_antenna"
+    }; 
 
     // Set initial positions, velocities, and efforts to zero
     for (const auto &name : joint_names_)

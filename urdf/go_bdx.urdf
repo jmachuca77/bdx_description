@@ -3,6 +3,16 @@
   <material name="silver">
     <color rgba="0.700 0.700 0.700 1.000"/>
   </material>
+    <!-- Dummy root link without inertia -->
+  <link name="base_link"/>
+
+  <!-- Fixed joint connecting base_link to sw_bd0 -->
+  <joint name="fixed_base" type="fixed">
+    <parent link="base_link"/>
+    <child link="pelvis"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
   <link name="trunk">
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />

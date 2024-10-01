@@ -67,7 +67,7 @@ void BDXJointStatePublisher::publish_joint_states()
     // Publish the message
     publisher_->publish(message);
 
-    RCLCPP_INFO(this->get_logger(), "Published /joint_states message");
+    RCLCPP_DEBUG(this->get_logger(), "Published /joint_states message");
 }
 
 int main(int argc, char *argv[])

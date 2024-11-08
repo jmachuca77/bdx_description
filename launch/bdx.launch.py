@@ -52,21 +52,6 @@ def generate_launch_description():
             default_value='100',
             description='Rate at which to send motor commands')
 
-    declare_motor_type_cmd = DeclareLaunchArgument(
-        'motor_type',
-        default_value='GO_M8010_6',
-        description='Type of the motor')
-
-    declare_motor_id_cmd = DeclareLaunchArgument(
-        'motor_id',
-        default_value='0',
-        description='ID of the motor')
-
-    declare_joint_name_cmd = DeclareLaunchArgument(
-        'joint_name',
-        default_value='unitree_motor_joint',
-        description='Name of the joint')
-
     motor_controller_node = Node(
         package='unitree_motor_controller',
         executable='motor_controller',
@@ -76,9 +61,6 @@ def generate_launch_description():
             'config_file': LaunchConfiguration('motor_config_file'),
             'joint_state_publish_rate': LaunchConfiguration('joint_state_publish_rate'),
             'motor_command_publish_rate': LaunchConfiguration('motor_command_publish_rate'),
-            'motor_type': LaunchConfiguration('motor_type'),
-            'motor_id': LaunchConfiguration('motor_id'),
-            'joint_name': LaunchConfiguration('joint_name')
         }]
     )
 
@@ -120,9 +102,6 @@ def generate_launch_description():
         declare_motor_config_file_cmd,
         declare_joint_state_publish_rate_cmd,
         declare_motor_command_publish_rate_cmd,
-        declare_motor_type_cmd,
-        declare_motor_id_cmd,
-        declare_joint_name_cmd,
         robot_state_publisher_node,
         joint_state_publisher_node,
         rviz_node,

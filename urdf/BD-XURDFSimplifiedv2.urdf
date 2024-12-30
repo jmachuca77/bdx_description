@@ -7,6 +7,16 @@
   <material name="silver">
     <color rgba="0.700 0.700 0.700 1"/>
   </material>
+
+      <!-- Dummy root link without inertia -->
+  <link name="dummy_link"/>
+  <!-- Fixed joint connecting base_link to sw_bd0 -->
+  <joint name="fixed_base" type="fixed">
+    <parent link="dummy_link"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
   <link name="base_link">
     <inertial>
       <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
@@ -16,14 +26,14 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -36,14 +46,14 @@
     <visual>
       <origin xyz="0.07855 -0.121396 -0.212607" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_antenna.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_antenna.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.07855 -0.121396 -0.212607" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_antenna.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_antenna.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -56,14 +66,14 @@
     <visual>
       <origin xyz="-0.07855 -0.121396 -0.212607" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_antenna.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_antenna.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.07855 -0.121396 -0.212607" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_antenna.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_antenna.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -76,14 +86,14 @@
     <visual>
       <origin xyz="-0.0 0.029589 -0.13997" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/head.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/head.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.0 0.029589 -0.13997" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/head.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/head.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -96,14 +106,14 @@
     <visual>
       <origin xyz="-1.1e-05 -0.025143 -0.142949" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/neck_yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/neck_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-1.1e-05 -0.025143 -0.142949" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/neck_yaw.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/neck_yaw.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -116,14 +126,14 @@
     <visual>
       <origin xyz="0.021882 -0.02779 -0.111051" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/neck_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/neck_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.021882 -0.02779 -0.111051" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/neck_pitch.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/neck_pitch.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -136,14 +146,14 @@
     <visual>
       <origin xyz="0.004148 0.097795 -0.060489" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/neck_extension.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/neck_extension.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.004148 0.097795 -0.060489" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/neck_extension.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/neck_extension.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -156,14 +166,14 @@
     <visual>
       <origin xyz="-0.123586 0.015986 0.294812" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_foot.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_foot.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.123586 0.015986 0.294812" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_foot.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_foot.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -176,14 +186,14 @@
     <visual>
       <origin xyz="-0.133053 0.016698 0.157628" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_lower_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_lower_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.133053 0.016698 0.157628" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_lower_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_lower_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -196,14 +206,14 @@
     <visual>
       <origin xyz="-0.133053 0.027291 0.039591" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_upper_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_upper_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.133053 0.027291 0.039591" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_upper_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_upper_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -216,14 +226,14 @@
     <visual>
       <origin xyz="-0.051164 0.007949 0.037966" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_hip.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_hip.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.051164 0.007949 0.037966" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_hip.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_hip.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -236,14 +246,14 @@
     <visual>
       <origin xyz="-0.046212 0.00171 -0.022391" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_hip_rotation.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_rotation.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.046212 0.00171 -0.022391" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_hip_rotation.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_hip_rotation.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -256,14 +266,14 @@
     <visual>
       <origin xyz="0.124257 0.015977 0.294811" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_foot.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_foot.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.124257 0.015977 0.294811" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_foot.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_foot.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -276,14 +286,14 @@
     <visual>
       <origin xyz="0.133723 0.01669 0.157628" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_lower_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_lower_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.133723 0.01669 0.157628" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_lower_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_lower_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -296,14 +306,14 @@
     <visual>
       <origin xyz="0.133723 0.027282 0.03959" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_upper_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_upper_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.133723 0.027282 0.03959" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_upper_leg.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_upper_leg.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -316,14 +326,14 @@
     <visual>
       <origin xyz="0.051835 0.00794 0.037965" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_hip.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_hip.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.051835 0.00794 0.037965" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_hip.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_hip.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -336,14 +346,14 @@
     <visual>
       <origin xyz="0.046882 0.001702 -0.022392" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_hip_rotation.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_rotation.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.046882 0.001702 -0.022392" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_hip_rotation.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_hip_rotation.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -356,14 +366,14 @@
     <visual>
       <origin xyz="-0.10856 -0.047557 0.351528" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_foot_pad.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_foot_pad.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="-0.10856 -0.047557 0.351528" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/left_foot_pad.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/left_foot_pad.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>
@@ -376,14 +386,14 @@
     <visual>
       <origin xyz="0.109231 -0.047566 0.351527" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_foot_pad.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_foot_pad.stl" scale="0.001 0.001 0.001"/>
       </geometry>
       <material name="silver"/>
     </visual>
     <collision>
       <origin xyz="0.109231 -0.047566 0.351527" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="../meshes/right_foot_pad.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://bdx_description/meshes/right_foot_pad.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
   </link>

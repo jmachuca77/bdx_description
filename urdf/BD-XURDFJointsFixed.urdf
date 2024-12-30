@@ -401,35 +401,35 @@
     <parent link="left_lower_leg"/>
     <child link="left_foot"/>
     <axis xyz="1.0 -0.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="left_knee" type="revolute">
     <origin xyz="0.0 0.000673 -0.118509" rpy="0 0 0"/>
     <parent link="left_upper_leg"/>
     <child link="left_lower_leg"/>
     <axis xyz="-1.0 -0.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="left_hip_pitch" type="revolute">
     <origin xyz="0.081888 -0.019409 0.0" rpy="0 0 0"/>
     <parent link="left_hip"/>
     <child link="left_upper_leg"/>
     <axis xyz="1.0 0.0 -0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="left_hip_roll" type="revolute">
     <origin xyz="0.004953 -0.01127 -0.059623" rpy="0 0 0"/>
     <parent link="left_hip_rotation"/>
     <child link="left_hip"/>
     <axis xyz="0.0 -1.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="left_hip_yaw" type="revolute">
     <origin xyz="0.04661 0.0 0.0072" rpy="0 0 0"/>
     <parent link="body"/>
     <child link="left_hip_rotation"/>
     <axis xyz="0.0 0.0 -1.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="right_foot_pad" type="fixed">
     <origin xyz="0.015026 0.058573 -0.061836" rpy="0 0 0"/>
@@ -442,70 +442,70 @@
     <parent link="right_lower_leg"/>
     <child link="right_foot"/>
     <axis xyz="-1.0 -0.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="right_knee" type="revolute">
     <origin xyz="0.0 0.000674 -0.11851" rpy="0 0 0"/>
     <parent link="right_upper_leg"/>
     <child link="right_lower_leg"/>
     <axis xyz="1.0 0.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="right_hip_pitch" type="revolute">
     <origin xyz="-0.081889 -0.01941 0.0" rpy="0 0 0"/>
     <parent link="right_hip"/>
     <child link="right_upper_leg"/>
     <axis xyz="-1.0 -0.0 -0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="right_hip_yaw" type="revolute">
     <origin xyz="-0.046484 9e-06 0.0072" rpy="0 0 0"/>
     <parent link="body"/>
     <child link="right_hip_rotation"/>
     <axis xyz="0.0 0.0 -1.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="head_roll" type="revolute">
     <origin xyz="-1e-05 -0.05444 0.006383" rpy="0 0 0"/>
     <parent link="neck_yaw"/>
     <child link="head"/>
     <axis xyz="0.0 -0.989598 -0.143861"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="head_yaw" type="revolute">
     <origin xyz="-0.000107 0.002821 0.031883" rpy="0 0 0"/>
     <parent link="neck_pitch"/>
     <child link="neck_yaw"/>
     <axis xyz="-0.0 -0.143861 0.989598"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="head_pitch" type="revolute">
     <origin xyz="0.004266 0.13236 0.028444" rpy="0 0 0"/>
     <parent link="neck_extension"/>
     <child link="neck_pitch"/>
     <axis xyz="-1.0 -0.0 -0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="neck_pitch" type="revolute">
     <origin xyz="-0.00375 -0.092558 0.053208" rpy="0 0 0"/>
     <parent link="body"/>
     <child link="neck_extension"/>
     <axis xyz="-1.0 0.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="left_antenna" type="revolute">
     <origin xyz="0.078549 0.161147 0.045871" rpy="0 0 0"/>
     <parent link="head"/>
     <child link="left_antenna"/>
     <axis xyz="1.0 -0.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="right_antenna" type="revolute">
     <origin xyz="-0.07855 0.161147 0.045871" rpy="0 0 0"/>
     <parent link="head"/>
     <child link="right_antenna"/>
     <axis xyz="-1.0 -0.0 -0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
   <joint name="left_foot_pad" type="fixed">
     <origin xyz="-0.015025 0.058572 -0.061836" rpy="0 0 0"/>
@@ -518,6 +518,6 @@
     <parent link="right_hip_rotation"/>
     <child link="right_hip"/>
     <axis xyz="-0.0 -1.0 0.0"/>
-    <limit upper="0.0" lower="0.0" effort="100.0" velocity="100.0"/>
+    <limit upper="3.14159" lower="-3.14159" effort="100.0" velocity="100.0"/>
   </joint>
 </robot>

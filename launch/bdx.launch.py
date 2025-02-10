@@ -11,7 +11,7 @@ from launch.actions import IncludeLaunchDescription
 
 def generate_launch_description():
     package_name = 'bdx_description'
-    urdf_file = 'go_bdx.urdf'
+    urdf_file = 'uki_bdx.urdf'
     urdf_path = os.path.join(
         get_package_share_directory(package_name),
         'urdf',
@@ -19,13 +19,21 @@ def generate_launch_description():
 
     # Declare the 'launch_rviz' launch argument with default value 'false'
     launch_rviz = LaunchConfiguration('launch_rviz')
-    
+
+    joint_state_package_share = get_package_share_directory('serial_joint_state_publisher')
+    joint_state_config_file = os.path.join(joint_state_package_share, 'config', 'joint_config.yaml')
+
+    if not os.path.exists(joint_state_config_file):
+        print("Config file not found: {}".format(joint_state_config_file))
+    else:
+        print("Using config file: {}".format(joint_state_config_file))
+
 
     # Read the URDF file
     with open(urdf_path, 'r') as infp:
         robot_desc = infp.read()
 
-    declare_foxglove_bridge_arg = DeclareLaunchArgument('use_foxglove_bridge', default_value='false')
+    declare_foxglove_bridge_arg = DeclareLaunchArgument('use_foxglove_bridge', default_value='true')
 
     declare_rviz_cmd = DeclareLaunchArgument(
             'launch_rviz',
@@ -73,10 +81,13 @@ def generate_launch_description():
     )
 
     joint_state_publisher_node = Node(
-        package='bdx_description',
-        executable='bdx_joint_state_publisher',
+        package='serial_joint_state_publisher',
+        executable='serial_joint_state_publisher',
+        name='serial_joint_state_publisher',
         output='screen',
-        parameters=[{'use_sim_time': False}]
+        parameters=[joint_state_config_file],
+        # Uncomment the next line to set the log level to debug:
+        # arguments=['--ros-args', '--log-level', 'debug']
     )
 
     # Conditionally launch RViz if 'launch_rviz' is true
@@ -105,6 +116,5 @@ def generate_launch_description():
         robot_state_publisher_node,
         joint_state_publisher_node,
         rviz_node,
-        motor_controller_node,
         foxglove_bridge
     ])

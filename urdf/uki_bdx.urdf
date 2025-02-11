@@ -459,7 +459,7 @@
       <axis xyz="0 0 0"/>
   </joint>
   <joint name="neck_pitch" type="revolute">
-    <origin xyz="0.092558 -0.00375 0.053208" rpy="0 0 0"/>
+    <origin xyz="0.092558 -0.00375 0.053208" rpy="0 0.17 0"/>
     <parent link="body"/>
     <child link="neck_extension"/>
     <axis xyz="0.0 1.0 0.0"/>

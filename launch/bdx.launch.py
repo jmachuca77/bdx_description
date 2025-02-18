@@ -3,7 +3,7 @@ from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 import os
 
-from launch.substitutions import LaunchConfiguration, Command
+from launch.substitutions import LaunchConfiguration
 from launch.conditions import IfCondition
 from launch.actions import DeclareLaunchArgument
 from launch_xml.launch_description_sources import XMLLaunchDescriptionSource
@@ -17,8 +17,8 @@ def generate_launch_description():
         'urdf',
         urdf_file)
 
-    # Declare the 'launch_rviz' launch argument with default value 'false'
     launch_rviz = LaunchConfiguration('launch_rviz')
+    use_joy_bridge = LaunchConfiguration('use_joy_bridge')
 
     joint_state_package_share = get_package_share_directory('serial_joint_state_publisher')
     joint_state_config_file = os.path.join(joint_state_package_share, 'config', 'joint_config.yaml')
@@ -34,7 +34,7 @@ def generate_launch_description():
         robot_desc = infp.read()
 
     declare_foxglove_bridge_arg = DeclareLaunchArgument('use_foxglove_bridge', default_value='true')
-
+    declare_joy_bridge_arg = DeclareLaunchArgument('use_joy_bridge', default_value='true', description='Set to "true" to launch joy_serial_bridge_node')
     declare_rviz_cmd = DeclareLaunchArgument(
             'launch_rviz',
             default_value='false',
@@ -49,7 +49,7 @@ def generate_launch_description():
         ),
         description='Full path to the motor config file to load'
     )
-
+    
     declare_joint_state_publish_rate_cmd = DeclareLaunchArgument(
             'joint_state_publish_rate',
             default_value='10',
@@ -98,7 +98,7 @@ def generate_launch_description():
             output='screen',
             condition=IfCondition(launch_rviz),
         )
-    
+
     foxglove_bridge = IncludeLaunchDescription(
         XMLLaunchDescriptionSource([os.path.join(
             get_package_share_directory('foxglove_bridge'), 'launch/'),
@@ -107,8 +107,17 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('use_foxglove_bridge'))
     )
 
+    joy_serial_bridge_node = Node(
+        package='puddleduck_control',
+        executable='joy_serial_bridge_node',
+        name='joy_serial_bridge_node',
+        output='screen',
+        condition=IfCondition(use_joy_bridge)
+    )
+
     return LaunchDescription([
         declare_foxglove_bridge_arg,
+        declare_joy_bridge_arg,
         declare_rviz_cmd,
         declare_motor_config_file_cmd,
         declare_joint_state_publish_rate_cmd,
@@ -116,5 +125,6 @@ def generate_launch_description():
         robot_state_publisher_node,
         joint_state_publisher_node,
         rviz_node,
-        foxglove_bridge
+        foxglove_bridge,
+        joy_serial_bridge_node
     ])

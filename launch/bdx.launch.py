@@ -20,7 +20,7 @@ def generate_launch_description():
     launch_rviz = LaunchConfiguration('launch_rviz')
     use_joy_bridge = LaunchConfiguration('use_joy_bridge')
 
-    joint_state_package_share = get_package_share_directory('serial_joint_state_publisher')
+    joint_state_package_share = get_package_share_directory('puddleduck_control')
     joint_state_config_file = os.path.join(joint_state_package_share, 'config', 'joint_config.yaml')
 
     if not os.path.exists(joint_state_config_file):
@@ -81,8 +81,8 @@ def generate_launch_description():
     )
 
     joint_state_publisher_node = Node(
-        package='serial_joint_state_publisher',
-        executable='serial_joint_state_publisher',
+        package='puddleduck_control',
+        executable='serial_joint_state_publisher_node',
         name='serial_joint_state_publisher',
         output='screen',
         parameters=[joint_state_config_file],

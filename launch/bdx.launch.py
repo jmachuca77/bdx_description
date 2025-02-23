@@ -99,12 +99,31 @@ def generate_launch_description():
             condition=IfCondition(launch_rviz),
         )
 
-    foxglove_bridge = IncludeLaunchDescription(
-        XMLLaunchDescriptionSource([os.path.join(
-            get_package_share_directory('foxglove_bridge'), 'launch/'),
-            'foxglove_bridge_launch.xml'
-        ]),
-        condition=IfCondition(LaunchConfiguration('use_foxglove_bridge'))
+    foxglove_bridge_node = Node(
+        package='foxglove_bridge',
+        executable='foxglove_bridge',
+        name='foxglove_bridge',
+        output='log',  # Redirect output to log
+        arguments=['--ros-args', '--log-level', 'error'],  # Only show error logs
+        parameters=[{
+            'port': 8765,
+            'address': '0.0.0.0',
+            'tls': False,
+            'certfile': '',
+            'keyfile': '',
+            'topic_whitelist': ['.*'],
+            'param_whitelist': ['.*'],
+            'service_whitelist': ['.*'],
+            'client_topic_whitelist': ['.*'],
+            'min_qos_depth': 1,
+            'max_qos_depth': 10,
+            'num_threads': 0,
+            'send_buffer_limit': 10000000,
+            'use_sim_time': False,
+            'capabilities': ['clientPublish', 'parameters', 'parametersSubscribe', 'services', 'connectionGraph', 'assets'],
+            'include_hidden': False,
+            'asset_uri_allowlist': ['^package://(?:\\w+/)*\\w+\\.(?:dae|fbx|glb|gltf|jpeg|jpg|mtl|obj|png|stl|tif|tiff|urdf|webp|xacro)$']
+        }]
     )
 
     joy_serial_bridge_node = Node(
@@ -125,6 +144,6 @@ def generate_launch_description():
         robot_state_publisher_node,
         joint_state_publisher_node,
         rviz_node,
-        foxglove_bridge,
+        foxglove_bridge_node,
         joy_serial_bridge_node
     ])

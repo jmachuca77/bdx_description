@@ -79,13 +79,26 @@ def generate_launch_description():
         output='screen',
         parameters=[{'robot_description': robot_desc}]
     )
+# Smoothing Parameters
+# smoothing_alpha
+#   Used only with the EMA method, this value (typically between 0.0 and 1.0) determines the weight given to the new command versus the previous command.
+#   A higher alpha (closer to 1) means the new input is used more, resulting in less smoothing (i.e., faster response but more abrupt changes).
+#   A lower alpha (closer to 0) means the previous value dominates, leading to smoother but slower changes.
+# smoothing_max_delta
+#   When using the ramp method, this parameter defines the maximum allowed change in the command value per update cycle. It effectively caps the acceleration of the actuator’s movement.
+#   A smaller value means the command can only change slowly, ensuring very smooth transitions.
+#   A larger value allows faster changes, which might feel more responsive but can also lead to jerky motion if the input signal is noisy.
 
     joint_state_publisher_node = Node(
         package='puddleduck_control',
         executable='serial_joint_state_publisher_node',
         name='serial_joint_state_publisher',
         output='screen',
-        parameters=[joint_state_config_file],
+        parameters=[joint_state_config_file,
+            {
+                "smoothing_alpha": 0.1,         # Used for "ema" smoothing
+                "smoothing_max_delta": 0.1      # Used for "ramp" smoothing
+            }],
         # Uncomment the next line to set the log level to debug:
         # arguments=['--ros-args', '--log-level', 'debug']
     )

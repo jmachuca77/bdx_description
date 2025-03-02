@@ -97,7 +97,12 @@ def generate_launch_description():
         parameters=[joint_state_config_file,
             {
                 "smoothing_alpha": 0.1,         # Used for "ema" smoothing
-                "smoothing_max_delta": 0.1      # Used for "ramp" smoothing
+                "smoothing_max_delta": 0.3,      # Used for "ramp" smoothing
+                "head_pitch_mix_positive_threshold": 0.2,
+                "head_pitch_mix_negative_threshold": -0.13,
+                "neck_pitch_mix_scale_positive": 0.7,
+                "neck_pitch_mix_scale_negative": 1.3,
+                "neck_pitch_offset": 0.45
             }],
         # Uncomment the next line to set the log level to debug:
         # arguments=['--ros-args', '--log-level', 'debug']

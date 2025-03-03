@@ -134,7 +134,6 @@ def generate_launch_description():
         declare_foxglove_bridge_arg,
         declare_joy_bridge_arg,
         declare_rviz_cmd,
-        declare_motor_config_file_cmd,
         declare_joint_state_publish_rate_cmd,
         declare_motor_command_publish_rate_cmd,
         robot_state_publisher_node,

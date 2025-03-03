@@ -39,17 +39,7 @@ def generate_launch_description():
             'launch_rviz',
             default_value='false',
             description='Set to "true" to launch RViz')
-
-    declare_motor_config_file_cmd = DeclareLaunchArgument(
-        'motor_config_file',
-        default_value=os.path.join(
-            get_package_share_directory('unitree_motor_controller'),
-            'config',
-            'unitree_motor_config.yaml'
-        ),
-        description='Full path to the motor config file to load'
-    )
-    
+  
     declare_joint_state_publish_rate_cmd = DeclareLaunchArgument(
             'joint_state_publish_rate',
             default_value='10',
@@ -59,18 +49,6 @@ def generate_launch_description():
             'motor_command_publish_rate',
             default_value='100',
             description='Rate at which to send motor commands')
-
-    motor_controller_node = Node(
-        package='unitree_motor_controller',
-        executable='motor_controller',
-        name='motor_controller',
-        output='screen',
-        parameters=[{
-            'config_file': LaunchConfiguration('motor_config_file'),
-            'joint_state_publish_rate': LaunchConfiguration('joint_state_publish_rate'),
-            'motor_command_publish_rate': LaunchConfiguration('motor_command_publish_rate'),
-        }]
-    )
 
     # Pass the robot_description parameter
     robot_state_publisher_node = Node(

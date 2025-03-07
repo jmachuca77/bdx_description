@@ -62,7 +62,7 @@ def generate_launch_description():
         executable='foxglove_bridge',
         name='foxglove_bridge',
         output='log',  # Redirect output to log
-        arguments=['--ros-args', '--log-level', 'error'],  # Only show error logs
+        arguments=['--ros-args', '--log-level', 'fatal'],  # Only show error logs
         parameters=[{
             'port': 8765,
             'address': '0.0.0.0',

@@ -95,12 +95,21 @@ def generate_launch_description():
         # arguments=['--ros-args', '--log-level', 'debug']
     )
 
+    xbee_joy_node = Node(
+        package='puddleduck_control',
+        executable='xbee_joy_node',
+        name='xbee_joy_node',
+        output='screen',
+        parameters=[puddleduck_control_config_file]
+    )
+
     return LaunchDescription([
         declare_foxglove_bridge_arg,
         declare_joy_bridge_arg,
         declare_rviz_cmd,
         robot_state_publisher_node,
         puddleduck_control_node,
+        xbee_joy_node,
         rviz_node,
         foxglove_bridge_node
     ])

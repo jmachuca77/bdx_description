@@ -76,7 +76,7 @@ def generate_launch_description():
             'min_qos_depth': 1,
             'max_qos_depth': 10,
             'num_threads': 0,
-            'send_buffer_limit': 10000000,
+            'send_buffer_limit': 50000000,
             'use_sim_time': False,
             'capabilities': ['clientPublish', 'parameters', 'parametersSubscribe', 'services', 'connectionGraph', 'assets'],
             'include_hidden': False,
@@ -103,6 +103,42 @@ def generate_launch_description():
         parameters=[puddleduck_control_config_file]
     )
 
+    mavros_node = Node(
+        package='mavros',
+        executable='mavros_node',
+        output='screen',
+        parameters=[
+            os.path.join(
+                get_package_share_directory('bdx_description'),
+                'config', 'apm_config.yaml'
+            ),
+            {
+                'fcu_url': 'udp://:11000@',
+                'gcs_url': 'udp://@',  # Adjust or remove if unused
+            }
+        ]
+    )
+
+    madgwick_node = Node(
+        package='imu_filter_madgwick',
+        executable='imu_filter_madgwick_node',
+        name='imu_filter',
+        output='screen',
+        parameters=[
+            {'use_mag': False,  # set True if your IMU has magnetometer data
+            'publish_tf': True,
+            'fixed_frame': 'odom',  # or 'map' if no odometry yet
+            'imu_frame': 'imu_link',
+            'world_frame': 'enu',   # adjust if your IMU uses NED or other
+            'gain': 0.01  # Default: 0.1, try values like 0.05, 0.01, or even smaller
+            }
+        ],
+        remappings=[
+            ('imu/data_raw', '/mavros/imu/data'),  # input from mavros
+            ('imu/data', '/imu/data_filtered')         # output filtered data
+        ]
+    )
+
     return LaunchDescription([
         declare_foxglove_bridge_arg,
         declare_joy_bridge_arg,
@@ -111,5 +147,7 @@ def generate_launch_description():
         puddleduck_control_node,
         xbee_joy_node,
         rviz_node,
+        mavros_node,
+        madgwick_node,
         foxglove_bridge_node
     ])

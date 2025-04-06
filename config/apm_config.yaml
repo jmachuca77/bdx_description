@@ -1,0 +1,7 @@
+/**/imu:
+  ros__parameters:
+    frame_id: "base_link"  # <-- Updated frame
+    linear_acceleration_stdev: 0.0003
+    angular_velocity_stdev: 0.0003490659
+    orientation_stdev: 1.0
+    magnetic_stdev: 0.0

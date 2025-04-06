@@ -404,6 +404,23 @@
       </geometry>
     </collision>
   </link>
+
+  <link name="imu_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="M_PI 0 0"/>
+      <geometry>
+        <box size="0.02 0.02 0.01"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <joint name="imu_joint" type="fixed">
+    <parent link="body"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/> <!-- Adjust xyz and rpy to the actual IMU mounting location -->
+  </joint>
+
   <joint name="left_hip_yaw" type="revolute">
     <origin xyz="0.0 0.04661 0.0072" rpy="0 0 0"/>
     <parent link="body"/>

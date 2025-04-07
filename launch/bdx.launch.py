@@ -33,6 +33,15 @@ def generate_launch_description():
     with open(urdf_path, 'r') as infp:
         robot_desc = infp.read()
 
+    declare_launch_antenna = DeclareLaunchArgument(
+        'launch_antenna',
+        default_value='true',
+        description='Set to "true" to launch smooth antenna node'
+    )
+
+    declare_antenna_target_min = DeclareLaunchArgument('antenna_target_min', default_value='0.14')
+    declare_antenna_target_max = DeclareLaunchArgument('antenna_target_max', default_value='0.45')
+    declare_antenna_max_speed = DeclareLaunchArgument('antenna_max_speed', default_value='0.5')
     declare_foxglove_bridge_arg = DeclareLaunchArgument('use_foxglove_bridge', default_value='true')
     declare_joy_bridge_arg = DeclareLaunchArgument('use_joy_bridge', default_value='true', description='Set to "true" to launch joy_serial_bridge_node')
     declare_rviz_cmd = DeclareLaunchArgument(
@@ -139,7 +148,26 @@ def generate_launch_description():
         ]
     )
 
+    smooth_antenna_node = Node(
+        package='puddleduck_control',
+        executable='smooth_antenna_mover_node',
+        name='smooth_antenna_mover',
+        output='screen',
+        parameters=[{
+            'left_id': 5,
+            'right_id': 6,
+            'target_min': LaunchConfiguration('antenna_target_min'),
+            'target_max': LaunchConfiguration('antenna_target_max'),
+            'max_speed': LaunchConfiguration('antenna_max_speed')
+        }],
+        condition=IfCondition(LaunchConfiguration('launch_antenna'))
+    )
+
     return LaunchDescription([
+        declare_launch_antenna,
+        declare_antenna_target_min,
+        declare_antenna_target_max,
+        declare_antenna_max_speed,
         declare_foxglove_bridge_arg,
         declare_joy_bridge_arg,
         declare_rviz_cmd,
@@ -149,5 +177,6 @@ def generate_launch_description():
         rviz_node,
         mavros_node,
         madgwick_node,
+        smooth_antenna_node,
         foxglove_bridge_node
     ])

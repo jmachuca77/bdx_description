@@ -577,4 +577,53 @@
     <child link="trunk"/>
     <axis xyz="0.0 0.0 0.0"/>
   </joint>
+
+   <!-- ========================= -->
+  <!--   Camera Frame Additions  -->
+  <!-- ========================= -->
+
+  <!-- Left camera frame -->
+  <link name="left_camera_frame">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>  <!-- replace x y z -->
+      <geometry>
+        <box size="0.032 0.032 0.032"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.032 0.032 0.032"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_camera_frame_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_camera_frame"/>
+    <origin xyz="0.14075 0.06 0.077" rpy="0 0 0"/>  <!-- same offsets as visual -->
+  </joint>
+
+  <!-- Right camera frame -->
+  <link name="right_camera_frame">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>  <!-- replace x y z -->
+      <geometry>
+        <box size="0.032 0.032 0.032"/>
+      </geometry>
+      <material name="silver"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.032 0.032 0.032"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_camera_frame_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_camera_frame"/>
+    <origin xyz="0.14075 -0.06 0.077" rpy="0 0 0"/>  <!-- same offsets as visual -->
+  </joint>
+
 </robot>

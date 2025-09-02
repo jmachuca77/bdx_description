@@ -8,6 +8,7 @@ from launch.conditions import IfCondition
 from launch.actions import DeclareLaunchArgument
 from launch_xml.launch_description_sources import XMLLaunchDescriptionSource
 from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
     package_name = 'bdx_description'
@@ -48,6 +49,12 @@ def generate_launch_description():
             'launch_rviz',
             default_value='false',
             description='Set to "true" to launch RViz')
+
+    declare_launch_cameras = DeclareLaunchArgument(
+        'launch_cameras',
+        default_value='true',
+        description='Set to "true" to launch cameras.launch.py'
+    )
 
     # Pass the robot_description parameter
     robot_state_publisher_node = Node(
@@ -163,6 +170,17 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('launch_antenna'))
     )
 
+    cameras_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('bdx_description'),
+                'launch',
+                'cameras.launch.py'
+            )
+        ),
+        condition=IfCondition(LaunchConfiguration('launch_cameras'))
+    )
+
     return LaunchDescription([
         declare_launch_antenna,
         declare_antenna_target_min,
@@ -171,6 +189,7 @@ def generate_launch_description():
         declare_foxglove_bridge_arg,
         declare_joy_bridge_arg,
         declare_rviz_cmd,
+        declare_launch_cameras,
         robot_state_publisher_node,
         puddleduck_control_node,
         xbee_joy_node,
@@ -178,5 +197,6 @@ def generate_launch_description():
         mavros_node,
         madgwick_node,
         smooth_antenna_node,
-        foxglove_bridge_node
+        foxglove_bridge_node,
+        cameras_launch
     ])

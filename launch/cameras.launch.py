@@ -9,8 +9,8 @@ def generate_launch_description():
         Node(
             package='usb_cam',
             executable='usb_cam_node_exe',
-            name='usb_cam0',
-            namespace='camera0',
+            name='right_body_usb_cam',
+            namespace='right_body_camera',
             output='screen',
             parameters=[{
                 'video_device': '/dev/video0',
@@ -26,8 +26,8 @@ def generate_launch_description():
         Node(
             package='usb_cam',
             executable='usb_cam_node_exe',
-            name='usb_cam1',
-            namespace='camera1',
+            name='left_body_usb_cam',
+            namespace='left_body_camera',
             output='screen',
             parameters=[{
                 'video_device': '/dev/video2',

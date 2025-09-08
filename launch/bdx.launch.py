@@ -56,6 +56,12 @@ def generate_launch_description():
         description='Set to "true" to launch cameras.launch.py'
     )
 
+    declare_use_head_camera = DeclareLaunchArgument(
+        'use_head_camera',
+        default_value='false',
+        description='Set to "true" to use the head camera in person tracker'
+    )
+
     # Pass the robot_description parameter
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
@@ -77,8 +83,8 @@ def generate_launch_description():
         package='foxglove_bridge',
         executable='foxglove_bridge',
         name='foxglove_bridge',
-        output='log',  # Redirect output to log
-        arguments=['--ros-args', '--log-level', 'fatal'],  # Only show error logs
+        output='log',
+        arguments=['--ros-args', '--log-level', 'fatal'],
         parameters=[{
             'port': 8765,
             'address': '0.0.0.0',
@@ -133,7 +139,7 @@ def generate_launch_description():
             ),
             {
                 'fcu_url': 'udp://:11000@',
-                'gcs_url': 'udp://@',  # Adjust or remove if unused
+                'gcs_url': 'udp://@',
             }
         ]
     )
@@ -154,7 +160,7 @@ def generate_launch_description():
         ],
         remappings=[
             ('imu/data_raw', '/mavros/imu/data'),  # input from mavros
-            ('imu/data', '/imu/data_filtered')         # output filtered data
+            ('imu/data', '/imu/data_filtered')     # output filtered data
         ]
     )
 
@@ -184,6 +190,17 @@ def generate_launch_description():
         condition=IfCondition(LaunchConfiguration('launch_cameras'))
     )
 
+    person_tracker_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('bdx_person_tracker'),
+                'launch',
+                'person_tracker.launch.py'
+            )
+        ),
+        launch_arguments={'use_head_camera': LaunchConfiguration('use_head_camera')}.items()
+    )
+
     return LaunchDescription([
         declare_launch_antenna,
         declare_antenna_target_min,
@@ -193,6 +210,7 @@ def generate_launch_description():
         declare_joy_bridge_arg,
         declare_rviz_cmd,
         declare_launch_cameras,
+        declare_use_head_camera,
         robot_state_publisher_node,
         puddleduck_control_node,
         xbee_joy_node,
@@ -201,5 +219,6 @@ def generate_launch_description():
         madgwick_node,
         smooth_antenna_node,
         foxglove_bridge_node,
-        cameras_launch
+        cameras_launch,
+        person_tracker_launch
     ])

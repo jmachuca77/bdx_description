@@ -113,8 +113,14 @@ def generate_launch_description():
         output='screen',
         parameters=[
             puddleduck_control_config_file,
-            {"feedback_source": "udp", "udp_port": 5005, "udp_bind_address": "0.0.0.0"},
-        ]
+            {
+                "feedback_source": "udp",
+                "udp_bind_address": "0.0.0.0",
+                "udp_port": 5005,
+                "udp_multicast_group": "239.255.0.1",        # set to your group
+                "udp_interface_address": "0.0.0.0",          # or specific NIC IP
+            },
+        ],
         # condition=IfCondition(use_joy_bridge)
         # Uncomment the next line to set the log level to debug:
         # arguments=['--ros-args', '--log-level', 'debug']
